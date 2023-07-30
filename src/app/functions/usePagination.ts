@@ -1,17 +1,19 @@
 import { useState } from 'react';
 
-const usePagination = (itemsCount: number,) => {
+const usePagination = (totalItems: number, itemsPerPage: number) => {
     const [activePage, setActivePage] = useState(1);
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     const goToPage = (pageNumber: number) => {
-        setActivePage(pageNumber);
+      setActivePage(pageNumber);
     };
   
     return {
-      activePage,
       goToPage,
-      firstElement: (activePage - 1) * itemsCount,
-      lastElement: activePage * itemsCount,
+      activePage,
+      totalPages,
+      firstElement: (activePage - 1) * itemsPerPage,
+      lastElement: activePage * itemsPerPage,
     };
   };
   
