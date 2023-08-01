@@ -5,9 +5,10 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 import MealCard from './MealCard';
-import fetchAllDishes from '../functions/api';
+import { fetchAllDishes } from '../functions/api';
 import usePagination from '../functions/usePagination';
-
+import Link from 'next/link'
+import MealData from '../interfaces'
 
 const CardBlock  = () => {
   const [meals, setMeals] = useState([]);
@@ -23,7 +24,7 @@ const CardBlock  = () => {
   const pagination = usePagination(meals.length, 10);
   const activeMeals = meals.slice(pagination.firstElement, pagination.lastElement);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+  const changePage = (event: React.ChangeEvent<unknown>, page: number) => {
     pagination.goToPage(page);
   };
 
@@ -37,9 +38,11 @@ const CardBlock  = () => {
         height: "max-content",
       }}>
         {
-          activeMeals ? activeMeals.map((meal) => (
+          activeMeals ? activeMeals.map((meal: MealData) => (
               <Grid item key={meal.idMeal} xs={6}>
-                <MealCard key={meal.idMeal} meal={meal} />
+                <Link href={`/${meal.idMeal}`}>
+                  <MealCard key={meal.idMeal} meal={meal} />
+                </Link>
               </Grid>
             ))
           : null
@@ -48,7 +51,7 @@ const CardBlock  = () => {
       <Pagination 
         count={pagination.totalPages}
         page={pagination.activePage}
-        onChange={handlePageChange}
+        onChange={changePage}
         variant="outlined"
         size="large"
         sx={{

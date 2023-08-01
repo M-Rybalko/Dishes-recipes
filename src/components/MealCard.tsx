@@ -5,14 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Chip from '@mui/material/Chip';
-
-interface MealData {
-  idMeal: string;
-  strMeal: string;
-  strMealThumb: string;
-  strCategory: string;
-  strTags: string;
-}
+import MealData from '../interfaces'
 
 interface Meal {
   meal: MealData
