@@ -7,6 +7,7 @@ import Chip from '@mui/material/Chip';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import * as styles from './Recipe.styles';
+import * as utils from './utils';
 
 type Props = {
   promise: Promise<RecipeData>
@@ -14,9 +15,6 @@ type Props = {
 
 export default async function Recipe({ promise }: Props) {
   const recipe = await promise;  
-  const parseYouTubeLink = () => {
-    return recipe.strYoutube.split('=')[1];
-  }
 
   return (
     <Box sx={styles.globalWrapper}>
@@ -24,9 +22,9 @@ export default async function Recipe({ promise }: Props) {
       <Typography variant="body2" sx={styles.dishCategory}>{recipe.strCategory}</Typography>
       <Box sx={styles.tagBox}>
         {
-          recipe.strTags ? recipe.strTags.split(',').map((tag) => (
+          recipe.strTags && recipe.strTags.split(',').map((tag) => (
             <Chip label={tag} key={tag} sx={styles.tag}/>
-          )) : null
+          ))
         }
       </Box>
       <Box sx={styles.contentWrapper}>
@@ -34,7 +32,7 @@ export default async function Recipe({ promise }: Props) {
           <iframe
             width="360"
             height="400"
-            src={`https://www.youtube.com/embed/${parseYouTubeLink()}`}
+            src={`https://www.youtube.com/embed/${utils.parseYouTubeLink(recipe.strYoutube)}`}
             title="YouTube"
             style={{ border: 'none' }}
             allowFullScreen
@@ -48,12 +46,9 @@ export default async function Recipe({ promise }: Props) {
           <List>
             <Typography gutterBottom variant="h5" sx= {styles.infoHeader}>Ingredients:</Typography>
             {
-              recipe ? Object.keys(recipe).map((ingredient) => (
-                ingredient.slice(0, 13) === "strIngredient" && recipe[ingredient] !== null
-                ? <ListItem sx ={{ justifyContent: "center" }} key={ingredient}>{recipe[ingredient]}</ListItem>  
-                : null
-              ))
-              : null
+              recipe && utils.parseIngredients(recipe).map((ingredient) => {
+                return <ListItem sx ={{ justifyContent: "center" }} key={ingredient}>{ingredient}</ListItem>
+              })
             }
           </List>
         </Box>
