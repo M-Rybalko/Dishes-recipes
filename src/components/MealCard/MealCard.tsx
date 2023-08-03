@@ -26,10 +26,9 @@ const MealCard: React.FC<Meal> = ({ meal }) => {
           <Typography gutterBottom variant="h5">{meal.strMeal}</Typography>
           <Typography variant="body2">{meal.strCategory}</Typography>
           {
-            meal.strTags ? meal.strTags.split(',').map((tag) => (
+            meal.strTags && meal.strTags.split(',').map((tag) => (
               <Chip label={tag} key={tag} sx={styles.cardTag}/>
             ))
-            : null
           }
         </CardContent>
       </CardActionArea>
