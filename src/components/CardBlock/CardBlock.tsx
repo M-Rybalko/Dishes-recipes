@@ -4,11 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
-import MealCard from './MealCard';
-import { fetchAllDishes } from '../functions/api';
-import usePagination from '../functions/usePagination';
-import Link from 'next/link'
-import MealData from '../interfaces'
+import MealCard from '../MealCard/MealCard';
+import { fetchAllDishes } from '../../lib/api/api';
+import usePagination from '../../hooks/usePagination';
+import Link from 'next/link';
+import MealData from '../../interfaces/interfaces';
+import * as styles from './CardBlock.styles';
 
 const CardBlock  = () => {
   const [meals, setMeals] = useState([]);
@@ -29,14 +30,8 @@ const CardBlock  = () => {
   };
 
   return (
-    <Box sx={{
-      width: 1,
-      background: "radial-gradient(circle, rgba(92,59,26,1) 10%, rgba(13,12,11,1) 100%)",
-      p: "50px",
-    }}>
-      <Grid container spacing={5} sx={{
-        height: "max-content",
-      }}>
+    <Box sx={styles.globalWpapper}>
+      <Grid container spacing={5} sx={{ height: "max-content", }}>
         {
           activeMeals ? activeMeals.map((meal: MealData) => (
               <Grid item key={meal.idMeal} xs={6}>
@@ -54,24 +49,7 @@ const CardBlock  = () => {
         onChange={changePage}
         variant="outlined"
         size="large"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          mt: "50px",
-          '& .MuiPaginationItem-root': {
-            backgroundColor: "#f0c18d",
-            '&:hover': {
-              backgroundColor: "#ba966e",
-            },
-          },
-          '& .Mui-selected': {
-            backgroundColor: '#dea55f',
-            '&:hover': {
-              backgroundColor: "#dea55f",
-            },
-          },
-        }}
+        sx={styles.pagination}
       />
     </Box>
   )

@@ -1,11 +1,11 @@
 import '@fontsource/roboto/700.css';
-import Hero from '../components/Hero';
-import CardBlock from '../components/CardBlock';
-import { fetchAllDishes } from '@/functions/api';
+import Hero from '../components/Hero/Hero';
+import CardBlock from '../components/CardBlock/CardBlock';
+import { fetchAllDishes } from '@/lib/api/api';
 
 export default function Home() {
   return (
-    <main className="PageContent">
+    <main>
       <Hero />
       <CardBlock />
     </main>

@@ -5,7 +5,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Chip from '@mui/material/Chip';
-import MealData from '../interfaces'
+import MealData from '../../interfaces/interfaces';
+import * as styles from './MealCard.styles'
 
 interface Meal {
   meal: MealData
@@ -13,9 +14,7 @@ interface Meal {
 
 const MealCard: React.FC<Meal> = ({ meal }) => {
   return (
-    <Card sx={{
-      backgroundColor: "#f0c18d",
-    }}>
+    <Card sx={{ backgroundColor: "#f0c18d" }}>
       <CardActionArea>
         <CardMedia
           component = "img"
@@ -28,11 +27,7 @@ const MealCard: React.FC<Meal> = ({ meal }) => {
           <Typography variant="body2">{meal.strCategory}</Typography>
           {
             meal.strTags ? meal.strTags.split(',').map((tag) => (
-              <Chip label={tag} key={tag} sx={{
-                mr: "10px",
-                mt: "10px",
-                backgroundColor: "#dea55f",
-              }}/>
+              <Chip label={tag} key={tag} sx={styles.cardTag}/>
             ))
             : null
           }
