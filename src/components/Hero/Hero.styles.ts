@@ -1,7 +1,10 @@
 import { SxProps, Theme } from '@mui/material/styles';
 
 export const heroBackground: SxProps<Theme> = {
-  height: "500px",
+  height: {
+    xs: "80vh",
+    md: "65vh"
+  },
   backgroundImage: `url("https://wallpaperaccess.com/full/1843875.jpg")`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
@@ -11,15 +14,21 @@ export const heroBackground: SxProps<Theme> = {
 
 export const heroText: SxProps<Theme> = {
   display: 'block',
-  width: "40%",
+  width: {
+    xs: "90%",
+    md: "40%",
+  },
   color: "#fff",
   mt: "70px",
-  ml: "50px",
+  mx: {
+    xs: "20px",
+    md: "50px",
+  },
 }
 
 export const headline: SxProps<Theme> = {
   fontFamily: 'Tiempos',
-  fontSize: 42,
+  fontSize: 42
 }
 
 export const heroButton: SxProps<Theme> = {

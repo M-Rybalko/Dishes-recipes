@@ -18,7 +18,9 @@ const MealCard: React.FC<Meal> = ({ meal }) => {
       <CardActionArea>
         <CardMedia
           component = "img"
-          height = "300px"
+          style = {{
+            height: "40vh"
+          }}
           image = {meal.strMealThumb}
           alt = {meal.strMeal}
         />

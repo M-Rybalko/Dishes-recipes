@@ -34,7 +34,7 @@ const CardBlock  = () => {
       <Grid container spacing={5} sx={{ height: "max-content", }}>
         {
           activeMeals && activeMeals.map((meal: MealData) => (
-            <Grid item key={meal.idMeal} xs={6}>
+            <Grid item key={meal.idMeal} xs={12} sm={6}>
               <Link href={`/${meal.idMeal}`}>
                 <MealCard key={meal.idMeal} meal={meal} />
               </Link>

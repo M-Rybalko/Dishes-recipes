@@ -17,7 +17,8 @@ export const dishName: SxProps<Theme> = {
   justifyContent: "center",
   display: "flex",
   fontSize: "40px",
-  m: 0
+  m: 0,
+  textAlign: "center"
 }
 
 export const dishCategory: SxProps<Theme> = {
@@ -41,16 +42,29 @@ export const tag: SxProps<Theme> = {
 }
 
 export const contentWrapper: SxProps<Theme> = {
-  justifyContent: "center",
-  display: "flex",
+  justifyContent: {
+    xs: "center",
+    md: "space-between"
+  },
+  display: {
+    xs: "block",
+    md: "flex"
+  },
   mx: "40px",
+  mt: "20px"
 }
 
 export const youtube: SxProps<Theme> = { 
-  display: 'flex', 
+  display: {
+    xs: "block",
+    md: "flex"
+  },
+  mr: {
+    md: "40px"
+  },
   justifyContent: 'center',
   backgroundColor: "transparent",
-  width: "33%",
+  width: "100%",
   boxShadow: 0
 }
 
@@ -59,10 +73,34 @@ export const infoHeader: SxProps<Theme> = {
   justifyContent: "center",
   display: "flex",
   textAlign: "center",
+  mt: {
+    xs: "30px",
+    md: 0
+  }
 }
 
 export const instructions: SxProps<Theme> = {
-  display: "flex",
+  display: {
+    xs: "block",
+    md: "flex"
+  },
   textAlign: "center",
-  mb: "30px",
+}
+
+export const backButton: SxProps<Theme> = {
+  display: 'flex',
+  justifyContent: 'center',
+  color: "#ede0b9",
+  mt: 0,
+  borderColor: "#ede0b9",
+  textDecoration: "none",
+  '&:hover': {
+    borderColor: "#826045",
+    color: "#826045"
+  }
+}
+
+export const buttonWrapper: SxProps<Theme> = {
+  display: 'flex',
+  justifyContent: 'center',
 }
